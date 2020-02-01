@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/sh -le
 
 echo "Creating release $1"
 
@@ -12,4 +12,6 @@ res=$(curl --location --request POST "${INSTANA_BASE}/api/releases" \
 
 echo $res
 
-echo ::set-output name=id::$res
+id=$(echo "$res" | jq ".id" -r)
+
+echo ::set-output name=id::$id

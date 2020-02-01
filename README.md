@@ -27,4 +27,7 @@ The id of the created release
 uses: taimos/github-action-instana-release@v1
 with:
   releaseName: 'Deployed version 42'
+env:
+INSTANA_BASE: ${{ secrets.INSTANA_BASE }}
+INSTANA_TOKEN: ${{ secrets.INSTANA_TOKEN }}
 ```
