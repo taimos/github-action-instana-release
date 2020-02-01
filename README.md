@@ -6,8 +6,13 @@ This action creates a new release on your Instana tenant
 
 Set the following variables as secrets for your repository
 
-`INSTANA_BASE`: The base url of your tenant (e.g. `https://test-example.instana.io`)
-`INSTANA_TOKEN`: The API token to create releases
+### `INSTANA_BASE`
+
+The base url of your tenant (e.g. `https://test-example.instana.io`)
+
+### `INSTANA_TOKEN`
+
+The API token to create releases at Instana
 
 ## Inputs
 
