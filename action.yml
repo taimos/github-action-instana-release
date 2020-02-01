@@ -1,8 +1,9 @@
 # action.yml
 name: 'Instana Release'
 description: 'Create a release marker in Instana with the given name'
-icon: bookmark
-color: blue 
+branding:
+  icon: bookmark
+  color: blue
 inputs:
   releaseName:
     description: 'Name of the release'
