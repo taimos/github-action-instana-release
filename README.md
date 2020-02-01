@@ -23,11 +23,11 @@ The id of the created release
 
 ## Example usage
 
-```
+```yaml
 uses: taimos/github-action-instana-release@v1
 with:
   releaseName: 'Deployed version 42'
 env:
-INSTANA_BASE: ${{ secrets.INSTANA_BASE }}
-INSTANA_TOKEN: ${{ secrets.INSTANA_TOKEN }}
+  INSTANA_BASE: ${{ secrets.INSTANA_BASE }}
+  INSTANA_TOKEN: ${{ secrets.INSTANA_TOKEN }}
 ```
