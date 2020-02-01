@@ -1,0 +1,15 @@
+# action.yml
+name: 'Instana Release'
+description: 'Create a release marker in Instana with the given name'
+inputs:
+  releaseName:
+    description: 'Name of the release'
+    required: true
+outputs:
+  timide:
+    description: 'Release id'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.releaseName }}
