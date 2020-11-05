@@ -2,12 +2,16 @@
 
 echo "Creating release $1"
 
+echo "${2}" > scope.json
+
 res=$(curl --location --request POST "${INSTANA_BASE}/api/releases" \
   --header "Authorization: apiToken ${INSTANA_TOKEN}" \
   --header "Content-Type: application/json" \
   --data "{
 	\"name\": \"${1}\",
-	\"start\": $(date +%s)000
+	\"start\": $(date +%s)000,
+  \"applications\": $(jq -r '.applications' < scope.json),
+  \"services\": $(jq -r '.services' < scope.json),
 }")
 
 echo $res
