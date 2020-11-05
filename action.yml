@@ -8,6 +8,10 @@ inputs:
   releaseName:
     description: 'Name of the release'
     required: true
+  releaseScope:
+    description: 'Scope of the release'
+    required: false
+    default: '{}'
 outputs:
   timide:
     description: 'Release id'
@@ -16,3 +20,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.releaseName }}
+    - ${{ inputs.releaseScope }}
