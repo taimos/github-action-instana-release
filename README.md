@@ -58,11 +58,40 @@ The id of the created release
 
 ## Example usage
 
+### Without Release Scoping
+
 ```yaml
-uses: taimos/github-action-instana-release@v1
+uses: taimos/github-action-instana-release@v2
 with:
   releaseName: 'Deployed version 42'
 env:
   INSTANA_BASE: ${{ secrets.INSTANA_BASE }}
   INSTANA_TOKEN: ${{ secrets.INSTANA_TOKEN }}
 ```
+
+### With Release Scoping
+
+```yaml
+uses: taimos/github-action-instana-release@v2
+with:
+  releaseName: 'Deployed version 42'
+  releaseScope: >
+    {
+      "services": [
+        {
+          "name": "spring-webflux",
+          "scopedTo": {
+            "applications": [{ "name": "All Services" }]
+          }
+        },
+        { "name": "spring-boot" }
+      ]
+    }
+env:
+  INSTANA_BASE: ${{ secrets.INSTANA_BASE }}
+  INSTANA_TOKEN: ${{ secrets.INSTANA_TOKEN }}
+```
+
+Notice that, to nest a JSON datastructure in YAML without dealing with conversion issues, we are actually using a YAML multiline string by adding `>` at the beginning of the value for `releaseScope`.
+When using YAML multiline string, each line of the string must be indented at least one level deeper than the key.
+The [YAML Multiline](https://yaml-multiline.info/) is excellent to understand the nuances of multiline in YAML.
