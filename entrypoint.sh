@@ -14,7 +14,7 @@ res=$(curl --location --request POST "${INSTANA_BASE}/api/releases" \
 	\"name\": \"${1}\",
 	\"start\": $(date +%s)000,
   \"applications\": $(jq -r '.applications' < scope.json),
-  \"services\": $(jq -r '.services' < scope.json),
+  \"services\": $(jq -r '.services' < scope.json)
 }")
 
 echo $res
