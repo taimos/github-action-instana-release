@@ -10,6 +10,7 @@ res=$(curl --location --request POST "${INSTANA_BASE}/api/releases" \
   --show-error \
   --header "Authorization: apiToken ${INSTANA_TOKEN}" \
   --header "Content-Type: application/json" \
+  --user-data "taimos/instana-release/${version:-dev}" \
   --data "{
 	\"name\": \"${1}\",
 	\"start\": $(date +%s)000,
