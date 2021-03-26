@@ -86,8 +86,9 @@ When using YAML multiline string, each line of the string must be indented at le
 The [YAML Multiline](https://yaml-multiline.info/) is excellent to understand the nuances of multiline in YAML.
 
 ## Testing
-To test a new version of this GitHub Action, copy the `test-action.yml` to `.github/workflows`. The test can be executed
+To test a new version of this GitHub Action, copy the `test/test-action.yml` to `.github/workflows`. The test can be executed
 locally with [act](https://github.com/nektos/act).
 ```
-act -s INSTANA_BASE=<<INSTANA_BASE>> -s INSTANA_TOKEN="<<INSTANA_TOKEN>>"
+act -s INSTANA_BASE=<<INSTANA_BASE>> -s INSTANA_TOKEN="<<INSTANA_TOKEN>>" [--env version=<<VERSION>>]
 ```
+The `version` is optional and will be used to identify the user-agent. If not set `dev` will used as version.
