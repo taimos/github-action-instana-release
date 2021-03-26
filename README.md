@@ -20,7 +20,7 @@ Set the following variables as secrets for your repository:
   {
     "applications": [
       { "name": "My Awesome App" },
-      { "name": "My Even More Awesome App" },
+      { "name": "My Even More Awesome App" }
     ],
     "services": [
       { "name": "Cool service #1" },
@@ -84,3 +84,10 @@ env:
 Notice that, to nest a JSON datastructure in YAML without dealing with conversion issues, we are actually using a YAML multiline string by adding `>` at the beginning of the value for `releaseScope`.
 When using YAML multiline string, each line of the string must be indented at least one level deeper than the key.
 The [YAML Multiline](https://yaml-multiline.info/) is excellent to understand the nuances of multiline in YAML.
+
+## Testing
+To test a new version of this GitHub Action, copy the `test-action.yml` to `.github/workflows`. The test can be executed
+locally with [act](https://github.com/nektos/act).
+```
+act -s INSTANA_BASE=<<INSTANA_BASE>> -s INSTANA_TOKEN="<<INSTANA_TOKEN>>"
+```
