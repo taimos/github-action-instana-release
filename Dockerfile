@@ -1,6 +1,8 @@
 # Container image that runs your code
 FROM alpine:3.10
 
+ENV version=dev
+
 RUN apk add --no-cache curl jq
 
 RUN curl --silent https://api.github.com/repos/taimos/github-action-instana-release/releases/latest | jq -r '.tag_name' > /.version
