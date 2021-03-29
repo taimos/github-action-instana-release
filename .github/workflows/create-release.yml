@@ -1,0 +1,34 @@
+name: Release new version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to be used for the new release'
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Embed version in Dockerfile
+      run: sed -i "s/version=dev/version=${{ github.event.inputs.version }}/" Dockerfile
+    - name: Embed version in README.md
+      run: sed -i "s/%%version%%/${{ github.event.inputs.version }}/" README.md
+    - name: Create and push release commit and tag
+      uses: EndBug/add-and-commit@v7
+      with:
+        commit_message: "Version ${{ github.event.inputs.version }}"
+        message: "Update version to ${{ github.event.inputs.version }}"
+        tag: ${{ github.event.inputs.version }}
+        push: origin ${{ github.event.inputs.version }}
+        add: .
+    - name: Create GitHub release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        release_name: Release ${{ github.event.inputs.version }}
+        tag_name: ${{ github.event.inputs.version }}

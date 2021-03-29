@@ -1,0 +1,13 @@
+name: Test this action locally with act
+on: push
+jobs:
+  test-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test release
+        uses: ./
+        with:
+          releaseName: 'Github action test'
+        env:
+          INSTANA_BASE: ${{ secrets.INSTANA_BASE }}
+          INSTANA_TOKEN: ${{ secrets.INSTANA_TOKEN }}
