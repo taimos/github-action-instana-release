@@ -50,7 +50,7 @@ Set the following variables as secrets for your repository:
 ### Without Release Scoping
 
 ```yaml
-uses: taimos/github-action-instana-release@v2
+uses: taimos/github-action-instana-release@%%version%%
 with:
   releaseName: 'Deployed version 42'
 env:
@@ -61,7 +61,7 @@ env:
 ### With Release Scoping
 
 ```yaml
-uses: taimos/github-action-instana-release@v2
+uses: taimos/github-action-instana-release@%%version%%
 with:
   releaseName: 'Deployed version 42'
   releaseScope: >
